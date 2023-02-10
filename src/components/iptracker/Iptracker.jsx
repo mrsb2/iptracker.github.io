@@ -8,7 +8,8 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
     {
         fetch('http://ip-api.com/json/24.48.0.1')
         .then((response) => response.json())
-        .then((response) => console.log(response)) ;
+        .then((response) => console.log(response));
+        
 
         
 
