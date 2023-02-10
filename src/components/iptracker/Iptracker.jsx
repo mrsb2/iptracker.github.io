@@ -10,9 +10,9 @@ import { useState, useEffect, useRef } from 'react';
         
         const [location, setLocation] = useState({});
   
-        
+
         useEffect(() => {
-          fetch('http://ip-api.com/json/?files=61439')
+          fetch('https://ip-api.com/json/?files=61439')
             .then(response => response.json())
             .then(data => setLocation(data))
             .catch(error => console.error(error));
