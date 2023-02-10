@@ -1,1 +1,1 @@
-export {default as Article} from './article/Article';
+export {default as Iptracker} from './iptracker/Iptracker';
