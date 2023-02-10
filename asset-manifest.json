@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/iptracker.github.io/static/css/main.4e03bfc3.css",
+    "main.js": "/iptracker.github.io/static/js/main.c25fcc5b.js",
+    "static/js/787.563e31fc.chunk.js": "/iptracker.github.io/static/js/787.563e31fc.chunk.js",
+    "static/media/pattern-bg.png": "/iptracker.github.io/static/media/pattern-bg.a60a3c85aa8b88aac4b7.png",
+    "index.html": "/iptracker.github.io/index.html",
+    "static/media/icon-arrow.svg": "/iptracker.github.io/static/media/icon-arrow.2eaaa5ee3602d5aa14a2dba69e9fb7a0.svg",
+    "main.4e03bfc3.css.map": "/iptracker.github.io/static/css/main.4e03bfc3.css.map",
+    "main.c25fcc5b.js.map": "/iptracker.github.io/static/js/main.c25fcc5b.js.map",
+    "787.563e31fc.chunk.js.map": "/iptracker.github.io/static/js/787.563e31fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e03bfc3.css",
+    "static/js/main.c25fcc5b.js"
+  ]
+}
