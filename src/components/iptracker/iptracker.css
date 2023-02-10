@@ -8,26 +8,60 @@
     width: 100%;
 }
 .headerIpTracker{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     background-image: url(../../assets/images/pattern-bg.png);
     background-repeat: no-repeat;
     
+    
 }
 .inputIp{
+    
     width: 40%;
-    height: 3rem;
+    height: 3.7rem;
     border-top-left-radius : 1rem;
-    border-top-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    
     margin-top: 0rem;
     margin-bottom: 6rem;
     border-style: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
+.inputIp:focus{
+    outline: none;
+}
+.inputIpDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+.okBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    margin-bottom: 6rem;
+    height: 3.9rem;
+    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 1rem;
+    width: 4.1rem;
+}
+.okBtn>img{
+    width: 0.8rem;
+    height: 1.2rem;
 }
 .headerIpTracker>h1{
     color: white;
     font-weight: 700;
+    margin-bottom: 0.5rem;
 
     
 }
@@ -55,4 +89,28 @@
     border: none;
     
 
+}
+
+/* -------------------------- */
+.InfoIP{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.containerIP{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.containerIP>p{
+    color: var(--darkGray);
+}
+.separator{
+    width: 1px;
+    height: 85px;
+    background-color: lightgray;
 }
