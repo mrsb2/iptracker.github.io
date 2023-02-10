@@ -2,30 +2,75 @@ import React from 'react';
 import './iptracker.css';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import ArrowSVG from '../../assets/images/icon-arrow.svg';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect} from 'react';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
     const Iptracker = () => {
         
-        const [location, setLocation] = useState({});
+        // const [location, setLocation] = useState({});
   
 
+        // useEffect(() => {
+        //   fetch('https://ip-api.com/json/?files=61439')
+        //     .then(response => response.json())
+        //     .then(data => setLocation(data))
+        //     .catch(error => console.error(error));
+        // }, []);
+
+
+
+
+        
+        const [location, setLocation] = useState({});
+       
+        
         useEffect(() => {
-          fetch('https://ip-api.com/json/?files=61439')
-            .then(response => response.json())
-            .then(data => setLocation(data))
-            .catch(error => console.error(error));
-        }, []);
-        console.log(location);
+            
+            const fetchData = async () => {
+                try {
+                    const response = await fetch("https://geo.ipify.org/api/v2/country,city?apiKey=at_2zRPEcd74rLg98bM4iv7G7FCfRAUK&ipAddress=8.8.8.8");
+                    const data = await response.json();
+                    setLocation(data);
+                } catch (error) {
+                    console.log('error', error);
+                }
+            };
+            if (Object.keys(location).length === 0) {
+                fetchData();
+            }
+            
+            
+        }, [location]);
+
         const containerStyle = {
             width: '100%',
             height: '100%'
           };
+          console.log(location);
         const center = {
-            lat: location.lat,
-            lng: location.lon
+            lat: 2,
+            lng: 2
           };
+       
+        
+          
+        
         return (
             <div className='ipTracker'>
                 <div className='headerIpTracker'>
@@ -56,25 +101,25 @@ import { useState, useEffect, useRef } from 'react';
                     <div className='InfoIP'>
                         <div className='containerIP'>
                             <p>IP ADDRESS</p>
-                            <h2>{location.query}</h2> 
+                            <h2>{}</h2> 
                         </div>
                         <div className='separator'></div>
                     
                         <div className='containerIP'>
                             <p>LOCATION</p>
-                            <h2>{location.country+', '+location.city}</h2> 
+                            <h2> {location.location.country},   {location.location.city}</h2> 
                         </div>
                         <div className='separator'></div>
                     
                         <div className='containerIP'>
                             <p>TIMEZONE</p>
-                            <h2>{location.timezone}</h2> 
+                            <h2>{}</h2> 
                         </div>
                         <div className='separator'></div>
                     
                         <div className='containerIP'>
                             <p>ISP</p>
-                            <h2>{location.org}</h2>  
+                            <h2>{}</h2>  
                         </div>
                     
                     </div>
