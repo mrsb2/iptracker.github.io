@@ -9,10 +9,10 @@ const Footer = () => {
     
   return (
     <div className='center'>
-        <div class="attribution">
+        <div className='attribution'>
             <p>
             Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-            Coded by <a href="#">Your Name Here</a>.
+            Coded by <a href="#">Vasiliu Ilie-Cristian</a>.
             </p>
         </div>
   </div>
