@@ -27,15 +27,7 @@ import { useState, useEffect} from 'react';
 
     const Iptracker = () => {
         
-        // const [location, setLocation] = useState({});
-  
-
-        // useEffect(() => {
-        //   fetch('https://ip-api.com/json/?files=61439')
-        //     .then(response => response.json())
-        //     .then(data => setLocation(data))
-        //     .catch(error => console.error(error));
-        // }, []);
+        
 
 
         const googleKey = process.env.REACT_APP_KEY;
@@ -51,7 +43,7 @@ import { useState, useEffect} from 'react';
         useEffect(() => {
             try {
                     const getData = async () => {
-                        const res = await fetch("http://ipwho.is/");
+                        const res = await fetch("https://ipwho.is/");
                         const data= await res.json()
                         setAdress(data.ip)
                     }
@@ -72,7 +64,7 @@ import { useState, useEffect} from 'react';
             useEffect(() => {
                 try {
                         const getData = async () => {
-                            const res = await fetch("http://ipwho.is/"+ip);
+                            const res = await fetch("https://ipwho.is/"+ip);
                             const data= await res.json()
                             setLocation(data)
                         }
@@ -84,7 +76,7 @@ import { useState, useEffect} from 'react';
             useEffect(() => {
                 try {
                         const getData = async () => {
-                            const res = await fetch("http://ipwho.is/"+ip);
+                            const res = await fetch("https://ipwho.is/"+ip);
                             const data= await res.json()
                             setTimezone(data.timezone)
                         }
@@ -96,7 +88,7 @@ import { useState, useEffect} from 'react';
             useEffect(() => {
                 try {
                         const getData = async () => {
-                            const res = await fetch("http://ipwho.is/"+ip);
+                            const res = await fetch("https://ipwho.is/"+ip);
                             const data= await res.json()
                             setIsp(data.connection)
                         }
@@ -136,7 +128,7 @@ import { useState, useEffect} from 'react';
             setIPAddress(ipAddress);
             try {
               const getData = async () => {
-                const res = await fetch(`http://ipwho.is/${ipAddress}`);
+                const res = await fetch(`https://ipwho.is/${ipAddress}`);
                 const data = await res.json();
                 setLocation(data);
                 setTimezone(data.timezone);
