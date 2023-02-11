@@ -232,3 +232,25 @@ position: absolute;
         display: none;
     }
 }
+@media screen and (max-height:1150px) {
+
+
+    .infoIpTracker{
+        height: 21rem;
+        transform: translate(0, -5rem);
+        
+        
+    }
+    
+}
+@media screen and (max-height:700px) {
+
+
+    .infoIpTracker{
+        height: 21rem;
+        transform: translate(0, 0rem);
+        
+        
+    }
+    
+}
