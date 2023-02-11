@@ -2,7 +2,11 @@ import React from 'react';
 import './iptracker.css';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import ArrowSVG from '../../assets/images/icon-arrow.svg';
+import LocationSVG from '../../assets/images/icon-location.svg';
 import { useState, useEffect} from 'react';
+
+
+
 
 
 
@@ -34,40 +38,118 @@ import { useState, useEffect} from 'react';
         // }, []);
 
 
-
+        const googleKey = process.env.REACT_APP_KEY;
 
         
+        const [ipAddress, setIPAddress] = useState('');
+        const [address, setAdress] = useState(ipAddress);
         const [location, setLocation] = useState({});
-       
-        
-        useEffect(() => {
-            
-            const fetchData = async () => {
-                try {
-                    const response = await fetch("https://geo.ipify.org/api/v2/country,city?apiKey=at_2zRPEcd74rLg98bM4iv7G7FCfRAUK&ipAddress=8.8.8.8");
-                    const data = await response.json();
-                    setLocation(data);
-                } catch (error) {
-                    console.log('error', error);
-                }
-            };
-            if (Object.keys(location).length === 0) {
-                fetchData();
-            }
-            
-            
-        }, [location]);
+        const [timezone, setTimezone] = useState({});
+        const [isp,setIsp] = useState({});
 
+
+        useEffect(() => {
+            try {
+                    const getData = async () => {
+                        const res = await fetch("http://ipwho.is/");
+                        const data= await res.json()
+                        setAdress(data.ip)
+                    }
+                    getData()
+                }catch (error){
+                    console.trace(error)
+                }
+            },[])
+        DotheIP(address);
+
+
+
+
+
+       function DotheIP(ip)
+       {
+        
+            useEffect(() => {
+                try {
+                        const getData = async () => {
+                            const res = await fetch("http://ipwho.is/"+ip);
+                            const data= await res.json()
+                            setLocation(data)
+                        }
+                        getData()
+                    }catch (error){
+                        console.trace(error)
+                    }
+                },[])
+            useEffect(() => {
+                try {
+                        const getData = async () => {
+                            const res = await fetch("http://ipwho.is/"+ip);
+                            const data= await res.json()
+                            setTimezone(data.timezone)
+                        }
+                        getData()
+                    }catch (error){
+                        console.trace(error)
+                    }
+                },[])
+            useEffect(() => {
+                try {
+                        const getData = async () => {
+                            const res = await fetch("http://ipwho.is/"+ip);
+                            const data= await res.json()
+                            setIsp(data.connection)
+                        }
+                        getData()
+                    }catch (error){
+                        console.trace(error)
+                    }
+                },[])
+        }
+                    
         const containerStyle = {
             width: '100%',
             height: '100%'
-          };
-          console.log(location);
+        };
+            console.log(location);
         const center = {
-            lat: 2,
+            lat: 37.3860517,
             lng: 2
+        };
+        center.lng=location.longitude;
+        center.lat= location.latitude;
+        
+        // const getEnteredData = async () => {
+        // const res = await fetch(
+        //     'http://ipwho.is/'+ipAddress
+        // )
+        // const data = await res.json()
+        // }
+        const handleSubmit = (event) => {
+            setIPAddress(event.target.value);
+        }
+        // const handleClick = () => {
+        //     setIPAddress(ipAddress);
+        //     console.log(ipAddress);
+        // }
+        const handleClick = async () => {
+            setIPAddress(ipAddress);
+            try {
+              const getData = async () => {
+                const res = await fetch(`http://ipwho.is/${ipAddress}`);
+                const data = await res.json();
+                setLocation(data);
+                setTimezone(data.timezone);
+                setIsp(data.connection);
+              };
+              getData();
+            } catch (error) {
+              console.trace(error);
+            }
           };
+        
        
+
         
           
         
@@ -76,22 +158,27 @@ import { useState, useEffect} from 'react';
                 <div className='headerIpTracker'>
                     <h1>IP Address Tracker</h1>
                     <div className='inputIpDiv'>
-                    <input className='inputIp'  placeholder='Search for any IP address or domain'>
+                    <form
+                    onSubmit={handleSubmit}
+                    autoComplete="off"
+                    className="w-full flex"
+                    ></form>
+                    <input className='inputIp'  onChange={(e) => setIPAddress(e.target.value)} placeholder='Search for any IP address or domain'>
                     </input>
-                    <div className='okBtn' ><img src={ArrowSVG}></img></div>
+                    <div className='okBtn' onClick={handleClick} ><img src={ArrowSVG}></img></div>
                     </div>
                 </div>
                 
                 <div className='map'>
                 <LoadScript
-                googleMapsApiKey="AIzaSyByFuAzyCzzFoOtUqxyBOxBrZUHbRW33vc"
+                googleMapsApiKey = {googleKey}
                 >
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={center}
                     zoom={14}
                 >
-                    { <div className='arrow'></div> }
+                    { <div className='arrow'><img src={LocationSVG}></img></div> }
                     <></>
                 </GoogleMap>
                 </LoadScript>
@@ -101,25 +188,25 @@ import { useState, useEffect} from 'react';
                     <div className='InfoIP'>
                         <div className='containerIP'>
                             <p>IP ADDRESS</p>
-                            <h2>{}</h2> 
+                            <h2>{location.ip}</h2> 
                         </div>
                         <div className='separator'></div>
                     
                         <div className='containerIP'>
                             <p>LOCATION</p>
-                            <h2> {location.location.country},   {location.location.city}</h2> 
+                            <h2> {location.country},   {location.city}</h2> 
                         </div>
                         <div className='separator'></div>
                     
                         <div className='containerIP'>
                             <p>TIMEZONE</p>
-                            <h2>{}</h2> 
+                            <h2>{timezone.utc}</h2> 
                         </div>
                         <div className='separator'></div>
                     
                         <div className='containerIP'>
                             <p>ISP</p>
-                            <h2>{}</h2>  
+                            <h2>{isp.isp}</h2>  
                         </div>
                     
                     </div>

@@ -1,4 +1,6 @@
-
+body{
+    background-color: rgb(86, 109, 211);
+}
 .ipTracker{
     display: flex;
     flex-direction: column;
@@ -75,7 +77,8 @@
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     margin-top: 0rem;
-    transform: translate(0, -13rem);
+    transform: translate(0, -11rem);
+    box-shadow: 0 0.8rem 1rem 0 rgba(0, 0, 0, 0.021),0 0.5rem 1.2rem 0 rgba(0,0,0,0.19) !important;
     
 }
 .map{
@@ -113,4 +116,119 @@
     width: 1px;
     height: 85px;
     background-color: lightgray;
+}
+.arrow{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  
+}
+.arrow>img{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+position: absolute;
+}
+
+@media screen and (max-width:1100px) {
+
+    .ipTracker{
+        width: 100%;
+        height: 100%;
+    }
+
+    .headerIpTracker{
+    
+        background-size: 100rem;
+        
+        
+    }
+    .inputIpDiv{
+        width: 100%;
+    }
+    .infoIpTracker{
+        position: absolute;
+        width: 25rem;
+        height: 25rem;
+        background-color: white;
+        border-top-left-radius : 1rem;
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        margin-top: 0rem;
+        transform: translate(0, -17rem);
+        
+        align-items: center;
+        
+    }
+    .InfoIP{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        
+    }
+    .containerIP{
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    .containerIP>p,H2{
+        margin: 0.3rem;
+       
+    }
+    .separator{
+        display: none;
+    }
+}
+@media screen and (max-width:720px) {
+
+    .headerIpTracker{
+    
+        background-size: 250rem;
+        height: 40%;
+        
+    }
+    .inputIpDiv{
+        width: 180%;
+    }
+    .infoIpTracker{
+        position: absolute;
+        width: 90%;
+        height: 23rem;
+        background-color: white;
+        border-top-left-radius : 1rem;
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        margin-top: 0rem;
+        transform: translate(0, -12rem);
+        align-items: center;
+        
+    }
+    .InfoIP{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        
+    }
+    .containerIP{
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    .containerIP>p,H2{
+        margin: 0.3rem;
+       
+    }
+    .separator{
+        display: none;
+    }
 }
